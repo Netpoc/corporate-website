@@ -10,6 +10,11 @@ import Image from "next/image";
 import { title } from "process";
 import React from "react";
 import { text } from "stream/consumers";
+import MTDApplicationForm from "@/components/mtd-application/MTDApplicationForm";
+import Button from "@/components/Button";
+import Framer from "@/components/Framer";
+import { fadeIn } from "@/lib/animation";
+
 
 export default function page() {
   const heroDetails = {
@@ -71,6 +76,17 @@ const allSection = [
     <div className="">
       <DefaultLayout>
         <AccountHero text={heroDetails?.text} title={heroDetails?.title} />
+
+        {/* Apply Button Section */}
+        <div className="main py-10 flex justify-center">
+          <Framer animation={fadeIn("up", 0.3)}>
+            <Button
+              text="Apply"
+              type="primary"
+              buttonFn={() => setIsApplicationOpen(true)}
+            />
+          </Framer>
+        </div>
         {/* <Partners /> */}
         <FeaturesSection features={allFeatures} />
         {allSection?.map((res, index) => (
